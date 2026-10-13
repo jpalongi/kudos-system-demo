@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>Moderation · Kudos</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='admin.js') }}" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">K</span> Kudos</a>
+    <div class="topbar-right"><span class="signed-in">Admin · {{ user['name'] }}</span><a class="text-link" href="{{ url_for('home') }}">Back to feed</a></div>
+  </header>
+  <main class="layout admin-layout">
+    <section class="intro">
+      <p class="eyebrow">ADMIN TOOLS</p>
+      <h1>Moderation queue</h1>
+      <p class="muted">Hide messages that break the rules. Add a reason so the action is recorded.</p>
+    </section>
+    <div id="admin-status" class="notice" role="status" aria-live="polite" hidden></div>
+    <div id="admin-list" class="admin-list"><p class="muted">Loading messages…</p></div>
+  </main>
+</body>
+</html>

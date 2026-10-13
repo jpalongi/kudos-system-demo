@@ -1,0 +1,74 @@
+:root { color-scheme: light; --ink:#17221d; --muted:#68766f; --green:#145c46; --green-dark:#0d4937; --mint:#e8f2ed; --line:#e4eae6; --paper:#f7f9f7; --white:#fff; --gold:#d5a64c; --red:#a13b36; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:15px/1.55 'Avenir Next',Avenir,Arial,sans-serif; }
+h1,h2 { margin:0; font-family:'Avenir Next',Avenir,Arial,sans-serif; letter-spacing:-.035em; }
+h1 { font-size:clamp(2rem,5vw,3.35rem); line-height:1.08; }
+h2 { font-size:1.3rem; }
+p { margin:.4rem 0; }
+a { color:var(--green); }
+.topbar { height:72px; padding:0 max(24px,calc((100vw - 1120px)/2)); display:flex; align-items:center; justify-content:space-between; gap:18px; background:#fff; border-bottom:1px solid var(--line); }
+.brand { display:flex; gap:10px; align-items:center; color:var(--ink); font:800 18px 'Avenir Next',Arial,sans-serif; text-decoration:none; }
+.brand-mark { width:34px; height:34px; border-radius:11px; display:grid; place-items:center; background:var(--green); color:#fff; font:800 18px 'Avenir Next',Arial,sans-serif; }
+.topbar-right { display:flex; align-items:center; gap:18px; }
+.topbar form { margin:0; }
+.signed-in { color:var(--muted); font-size:14px; }
+.text-link { font-weight:600; text-decoration:none; }
+.layout { width:min(1120px,calc(100% - 40px)); margin:48px auto 64px; }
+.intro { max-width:670px; margin-bottom:32px; }
+.intro h1 { margin:8px 0 10px; }
+.intro .muted { font-size:17px; }
+.eyebrow { color:var(--green); font-size:11px; font-weight:700; letter-spacing:.13em; }
+.muted { color:var(--muted); }
+.small { font-size:12px; }
+.columns { display:grid; grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr); gap:26px; align-items:start; }
+.panel,.feed-section { background:#fff; border:1px solid var(--line); border-radius:18px; }
+.panel { padding:26px; box-shadow:0 10px 35px rgba(25,60,43,.04); }
+.section-heading { display:flex; align-items:center; gap:12px; margin-bottom:22px; }
+.section-heading .eyebrow { margin:0 0 3px; }
+.icon-circle { display:grid; place-items:center; width:42px; height:42px; border-radius:14px; background:var(--mint); color:var(--green); font-size:20px; }
+.stack { display:flex; flex-direction:column; gap:10px; }
+label { margin-top:5px; font-size:13px; font-weight:700; }
+select,textarea,input { width:100%; border:1px solid #dce4df; border-radius:10px; background:#fff; color:var(--ink); font:inherit; padding:12px 13px; outline:none; }
+select:focus,textarea:focus,input:focus { border-color:var(--green); box-shadow:0 0 0 3px rgba(20,92,70,.12); }
+textarea { resize:vertical; min-height:118px; }
+.field-footer { display:flex; justify-content:space-between; gap:10px; }
+.button { border:0; border-radius:10px; padding:11px 15px; font:700 14px 'Avenir Next',Arial,sans-serif; cursor:pointer; transition:background .15s ease,transform .15s ease; }
+.button:hover { transform:translateY(-1px); }
+.button:disabled { opacity:.6; cursor:wait; transform:none; }
+.primary { display:flex; align-items:center; justify-content:space-between; color:#fff; background:var(--green); margin-top:8px; }
+.primary:hover { background:var(--green-dark); }
+.secondary { background:var(--mint); color:var(--green); margin-top:15px; }
+.quiet { padding:7px 10px; color:var(--muted); background:transparent; }
+.feed-section { padding:26px; }
+.feed-heading { justify-content:space-between; }
+.feed-heading h2 { font-size:1.5rem; }
+.live-pill { display:flex; align-items:center; gap:7px; padding:6px 10px; border:1px solid var(--line); border-radius:20px; color:var(--muted); font-size:12px; }
+.live-pill span { width:7px; height:7px; border-radius:50%; background:#3fa775; }
+.feed-list { display:flex; flex-direction:column; }
+.kudos-card { display:grid; grid-template-columns:40px 1fr; gap:12px; padding:17px 0; border-top:1px solid var(--line); }
+.avatar { width:38px; height:38px; display:grid; place-items:center; border-radius:50%; background:#f3ead7; color:#805e20; font-weight:700; }
+.kudos-meta { font-size:13px; }
+.kudos-meta strong { color:var(--ink); }
+.kudos-time { color:var(--muted); font-size:11px; }
+.kudos-message { margin:7px 0 0; white-space:pre-wrap; overflow-wrap:anywhere; }
+.notice { margin:8px 0 0; padding:10px 12px; border-radius:9px; background:var(--mint); color:var(--green-dark); font-size:13px; }
+.notice.error { color:var(--red); background:#fbefee; }
+.page-footer { padding:22px; border-top:1px solid var(--line); color:var(--muted); text-align:center; font-size:13px; }
+.login-page { min-height:100vh; display:grid; place-items:center; padding:24px; background:radial-gradient(ellipse at 50% 0%,#e7f1eb,transparent 58%),var(--paper); }
+.login-card { width:min(420px,100%); padding:35px; background:#fff; border:1px solid var(--line); border-radius:20px; box-shadow:0 16px 50px rgba(25,60,43,.08); }
+.login-card .brand-mark { width:46px; height:46px; font-size:22px; border-radius:15px; margin-bottom:22px; }
+.login-card h1 { font-size:2.4rem; margin:0 0 8px; }
+.login-card .stack { margin-top:24px; }
+.login-card .small { margin-top:18px; }
+.admin-layout { max-width:900px; }
+.admin-list { display:grid; gap:14px; }
+.admin-card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px; }
+.admin-card-head { display:flex; justify-content:space-between; gap:12px; margin-bottom:10px; }
+.status-tag { padding:4px 9px; border-radius:20px; background:var(--mint); color:var(--green); font-size:11px; font-weight:700; }
+.status-tag.hidden { background:#fff2df; color:#8b611a; }
+.admin-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+.admin-actions .button { padding:8px 11px; }
+.danger { background:#fbefee; color:var(--red); }
+.history { margin-top:12px; padding:12px; border-radius:10px; background:#f7f9f7; color:var(--muted); font-size:12px; }
+@media (max-width:760px) { .topbar { height:auto; min-height:64px; padding:12px 18px; } .signed-in { display:none; } .topbar-right { gap:10px; } .layout { width:min(100% - 28px,600px); margin:32px auto 45px; } .columns { grid-template-columns:1fr; gap:18px; } .panel,.feed-section { padding:20px; } }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }

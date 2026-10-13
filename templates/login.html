@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · Kudos</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-page">
+  <main class="login-card">
+    <div class="brand-mark" aria-hidden="true">K</div>
+    <p class="eyebrow">DATACOM TEAM</p>
+    <h1>Kudos</h1>
+    <p class="muted">A small way to celebrate the people you work with.</p>
+    {% if error %}<p class="notice error" role="alert">{{ error }}</p>{% endif %}
+    {% if config.DEMO_MODE %}
+    <form method="post" action="{{ url_for('login') }}" class="stack">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label for="user_id">Choose a demo account</label>
+      <select id="user_id" name="user_id" required>
+        {% for user_id, name, email, role in demo_users %}
+        <option value="{{ user_id }}">{{ name }}{% if role == 'admin' %} · Admin{% endif %}</option>
+        {% endfor %}
+      </select>
+      <button class="button primary" type="submit">Continue</button>
+    </form>
+    <p class="small muted">Demo sign-in is for local testing only.</p>
+    {% else %}
+    <p>Sign in through your organisation account to continue.</p>
+    {% endif %}
+  </main>
+</body>
+</html>

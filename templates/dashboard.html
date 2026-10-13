@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>Kudos · Team Portal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">K</span> Kudos</a>
+    <div class="topbar-right">
+      <span class="signed-in">{{ user['name'] }}</span>
+      {% if user['role'] == 'admin' %}<a class="text-link" href="{{ url_for('admin_page') }}">Moderation</a>{% endif %}
+      <form method="post" action="{{ url_for('logout') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button class="button quiet" type="submit">Sign out</button>
+      </form>
+    </div>
+  </header>
+  <main class="layout">
+    <section class="intro">
+      <p class="eyebrow">TEAM APPRECIATION</p>
+      <h1>Good work deserves a shout-out.</h1>
+      <p class="muted">Share a quick thank-you with someone on your team.</p>
+    </section>
+    <div class="columns">
+      <section class="panel form-panel" aria-labelledby="form-title">
+        <div class="section-heading"><span class="icon-circle">✦</span><div><p class="eyebrow">SEND A THANK-YOU</p><h2 id="form-title">Give kudos</h2></div></div>
+        <form id="kudos-form" class="stack">
+          <label for="recipient_id">Who do you want to recognise?</label>
+          <select id="recipient_id" name="recipient_id" required>
+            <option value="">Choose a colleague</option>
+            {% for colleague in colleagues %}<option value="{{ colleague['id'] }}">{{ colleague['name'] }}</option>{% endfor %}
+          </select>
+          <label for="message">Your message</label>
+          <textarea id="message" name="message" maxlength="500" rows="5" placeholder="Tell them what they did well…" required></textarea>
+          <div class="field-footer"><span id="message-count" class="small muted">0 / 500</span><span class="small muted">Keep it kind and specific.</span></div>
+          <button id="submit-kudos" class="button primary" type="submit">Send kudos <span aria-hidden="true">→</span></button>
+          <p id="form-status" class="notice" role="status" aria-live="polite" hidden></p>
+        </form>
+      </section>
+      <section class="feed-section" aria-labelledby="feed-title">
+        <div class="section-heading feed-heading"><div><p class="eyebrow">FROM AROUND THE TEAM</p><h2 id="feed-title">Recent kudos</h2></div><span class="live-pill"><span></span> Live</span></div>
+        <div id="feed" class="feed-list" aria-live="polite"><p class="muted">Loading kudos…</p></div>
+        <button id="load-more" class="button secondary" type="button" hidden>Show more</button>
+      </section>
+    </div>
+  </main>
+  <footer class="page-footer">A little recognition goes a long way.</footer>
+</body>
+</html>
